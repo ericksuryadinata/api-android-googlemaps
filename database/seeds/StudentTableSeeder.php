@@ -20,7 +20,7 @@ class StudentTableSeeder extends Seeder
         $address = ['Jalanin aja dulu, nomor terserah','Jalanin aja dulu, nomor terserah','Jalanin aja dulu, nomor terserah','Jalanin aja dulu, nomor terserah','Jalanin aja dulu, nomor terserah'];
         $latitude = ['-7.290689','-7.310185','-7.319549','-7.224533','-7.228961'];
         $longitude = ['112.714354','112.734944','112.769347','112.740708','112.773920'];
-        for($i = 1; $i <= 5; $i++){
+        for($i = 1; $i < 5; $i++){
             \DB::table('students')->insert([
                 'nbi' => $nbi[$i],
                 'name' => $name[$i],
@@ -28,6 +28,7 @@ class StudentTableSeeder extends Seeder
                 'date_of_birth' => $date_of_birth[$i],
                 'phone' => $phone[$i],
                 'address' => $address[$i],
+                'photo' => 'user.jpg',
                 'latitude' => $latitude[$i],
                 'longitude' => $longitude[$i],
             ]);
