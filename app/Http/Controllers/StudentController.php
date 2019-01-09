@@ -35,7 +35,7 @@ class StudentController extends Controller
             $request->file('photo')->move($destination,$images);
         }
 
-        $student = Student::create([
+        Student::create([
             'nbi' => $request->nbi,
             'name' => $request->name,
             'place_of_birth' => $request->place_of_birth,
@@ -47,7 +47,7 @@ class StudentController extends Controller
             'longitude' => $request->longitude
         ]);
 
-        return response()->json(array("status" => 'success'), 201);
+        return response()->json(array("status" => 'success'), 200);
     }
 
     public function update($id, Request $request)
@@ -95,6 +95,11 @@ class StudentController extends Controller
     public function delete($id)
     {
         Student::findOrFail($id)->delete();
+        return response()->json(array("status" => 'success'), 200);
+    }
+
+    public function anu(Request $request){
+
         return response()->json(array("status" => 'success'), 200);
     }
 }
