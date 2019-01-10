@@ -20,6 +20,6 @@ $router->group(['prefix' => 'api'], function () use ($router) {
     $router->get('students/{id}', ['uses' => 'StudentController@showOneStudent']);
     $router->post('students', ['uses' => 'StudentController@create']);
     $router->post('students/anu',['uses' => 'StudentController@anu']);
-    $router->delete('students/{id}', ['uses' => 'StudentController@delete']);
+    // $router->delete('students/{id}', ['uses' => 'StudentController@delete']);
     $router->put('students/{id}', ['uses' => 'StudentController@update']);
 });
