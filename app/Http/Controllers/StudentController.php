@@ -35,19 +35,24 @@ class StudentController extends Controller
             $request->file('photo')->move($destination,$images);
         }
 
-        $student = Student::create([
+        Student::create([
             'nbi' => $request->nbi,
             'name' => $request->name,
             'place_of_birth' => $request->place_of_birth,
             'date_of_birth' => $request->date_of_birth,
             'phone' => $request->phone,
             'address' => $request->address,
+            'faculty' => $request->faculty,
+            'major' => $request->major,
+            'gender' => $request->gender,
+            'hoby' => $request->hoby,
+            'nationality' => $request->nationality,
             'photo' => $images,
             'latitude' => $request->latitude,
             'longitude' => $request->longitude
         ]);
 
-        return response()->json(array("status" => 'success'), 201);
+        return response()->json(array("status" => 'success'), 200);
     }
 
     public function update($id, Request $request)
@@ -84,6 +89,11 @@ class StudentController extends Controller
             'date_of_birth' => $request->date_of_birth,
             'phone' => $request->phone,
             'address' => $request->address,
+            'faculty' => $request->faculty,
+            'major' => $request->major,
+            'gender' => $request->gender,
+            'hoby' => $request->hoby,
+            'nationality' => $request->nationality,
             'photo' => $images,
             'latitude' => $request->latitude,
             'longitude' => $request->longitude
@@ -95,6 +105,11 @@ class StudentController extends Controller
     public function delete($id)
     {
         Student::findOrFail($id)->delete();
+        return response()->json(array("status" => 'success'), 200);
+    }
+
+    public function anu(Request $request){
+
         return response()->json(array("status" => 'success'), 200);
     }
 }

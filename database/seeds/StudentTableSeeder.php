@@ -18,6 +18,11 @@ class StudentTableSeeder extends Seeder
         $date_of_birth = ['1995-02-01','1995-02-02','1995-02-03','1995-02-04','1995-02-05'];
         $phone = ['081234567890','081234567890','081234567890','081234567890','081234567890'];
         $address = ['Jalanin aja dulu, nomor terserah','Jalanin aja dulu, nomor terserah','Jalanin aja dulu, nomor terserah','Jalanin aja dulu, nomor terserah','Jalanin aja dulu, nomor terserah'];
+        $major = ['Informatika','Sipil','Arsitektur','Mesin','Industri'];
+        $faculty = ['Teknik','Hukum','Psikologi','Sastra','Ekonomi'];
+        $gender = ['pria','wanita','wanita','pria','pria'];
+        $hoby = ['bola','renang','basket','lari','basket'];
+        $nationality = ['indonesia','malaysia','filipina','vietnam','indonesia'];
         $latitude = ['-7.290689','-7.310185','-7.319549','-7.224533','-7.228961'];
         $longitude = ['112.714354','112.734944','112.769347','112.740708','112.773920'];
         for($i = 1; $i < 5; $i++){
@@ -28,6 +33,11 @@ class StudentTableSeeder extends Seeder
                 'date_of_birth' => $date_of_birth[$i],
                 'phone' => $phone[$i],
                 'address' => $address[$i],
+                'faculty' => $faculty[$i],
+                'major' => $major[$i],
+                'gender' => $gender[$i],
+                'hoby' => $hoby[$i],
+                'nationality' => $nationality[$i],
                 'photo' => 'user.jpg',
                 'latitude' => $latitude[$i],
                 'longitude' => $longitude[$i],
