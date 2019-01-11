@@ -42,6 +42,11 @@ class StudentController extends Controller
             'date_of_birth' => $request->date_of_birth,
             'phone' => $request->phone,
             'address' => $request->address,
+            'faculty' => $request->faculty,
+            'major' => $request->major,
+            'gender' => $request->gender,
+            'hoby' => $request->hoby,
+            'nationality' => $request->nationality,
             'photo' => $images,
             'latitude' => $request->latitude,
             'longitude' => $request->longitude
@@ -84,6 +89,11 @@ class StudentController extends Controller
             'date_of_birth' => $request->date_of_birth,
             'phone' => $request->phone,
             'address' => $request->address,
+            'faculty' => $request->faculty,
+            'major' => $request->major,
+            'gender' => $request->gender,
+            'hoby' => $request->hoby,
+            'nationality' => $request->nationality,
             'photo' => $images,
             'latitude' => $request->latitude,
             'longitude' => $request->longitude
