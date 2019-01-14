@@ -28,11 +28,27 @@ class StudentController extends Controller
         ]);
 
         $images = 'user.jpg';
+        $images1 = 'user.jpg';
+        $images2 = 'user.jpg';
         if($request->hasFile('photo')){
             $extension = $request->file('photo')->getClientOriginalExtension();
-            $images = $request->nbi.'.'.$extension;
+            $images = $request->nbi.'_photo.'.$extension;
             $destination = 'images';
             $request->file('photo')->move($destination,$images);
+        }
+
+        if($request->hasFile('photo1')){
+            $extension = $request->file('photo1')->getClientOriginalExtension();
+            $images1 = $request->nbi.'_photo1.'.$extension;
+            $destination = 'images';
+            $request->file('photo1')->move($destination,$images1);
+        }
+
+        if($request->hasFile('photo2')){
+            $extension = $request->file('photo2')->getClientOriginalExtension();
+            $images2 = $request->nbi.'_photo2.'.$extension;
+            $destination = 'images';
+            $request->file('photo2')->move($destination,$images2);
         }
 
         Student::create([
@@ -47,7 +63,12 @@ class StudentController extends Controller
             'gender' => $request->gender,
             'hoby' => $request->hoby,
             'nationality' => $request->nationality,
+            'tgl_masuk' => $request->tgl_masuk,
+            'tgl_keluar' => $request->tgl_keluar,
+            'dpp' => $request->dpp,
             'photo' => $images,
+            'photo1' => $images1,
+            'photo2' => $images2,
             'latitude' => $request->latitude,
             'longitude' => $request->longitude
         ]);
@@ -71,15 +92,39 @@ class StudentController extends Controller
         }
 
         $images = 'user.jpg';
+        $images1 = 'user.jpg';
+        $images2 = 'user.jpg';
         if($request->hasFile('photo')){
             $extension = $request->file('photo')->getClientOriginalExtension();
-            $images = $request->nbi.'.'.$extension;
+            $images = $request->nbi.'_photo.'.$extension;
             $fileNow = explode('.',$student->photo);
             if($request->nbi == $fileNow[0]){
                 Storage::delete($student->photo);
             }
             $destination = 'images';
             $request->file('photo')->move($destination,$images);
+        }
+
+        if($request->hasFile('photo1')){
+            $extension = $request->file('photo1')->getClientOriginalExtension();
+            $images1 = $request->nbi.'_photo1.'.$extension;
+            $fileNow = explode('.',$student->photo1);
+            if($request->nbi == $fileNow[0]){
+                Storage::delete($student->photo1);
+            }
+            $destination = 'images';
+            $request->file('photo1')->move($destination,$images1);
+        }
+
+        if($request->hasFile('photo2')){
+            $extension = $request->file('photo2')->getClientOriginalExtension();
+            $images2 = $request->nbi.'_photo2.'.$extension;
+            $fileNow = explode('.',$student->photo2);
+            if($request->nbi == $fileNow[0]){
+                Storage::delete($student->photo2);
+            }
+            $destination = 'images';
+            $request->file('photo2')->move($destination,$images2);
         }
         
         $student->update([
@@ -94,7 +139,12 @@ class StudentController extends Controller
             'gender' => $request->gender,
             'hoby' => $request->hoby,
             'nationality' => $request->nationality,
+            'tgl_masuk' => $request->tgl_masuk,
+            'tgl_keluar' => $request->tgl_keluar,
+            'dpp' => $request->dpp,
             'photo' => $images,
+            'photo1' => $images1,
+            'photo2' => $images2,
             'latitude' => $request->latitude,
             'longitude' => $request->longitude
         ]);
@@ -104,12 +154,9 @@ class StudentController extends Controller
 
     public function delete($id)
     {
-        Student::findOrFail($id)->delete();
-        return response()->json(array("status" => 'success'), 200);
-    }
-
-    public function anu(Request $request){
-
+        $student = Student::findOrFail($id);
+        Storage::delete([$student->photo, $student->photo1, $student->photo2]);
+        $student->delete();
         return response()->json(array("status" => 'success'), 200);
     }
 }
